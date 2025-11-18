@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://qvvsbi2epy2j"]
+
+[ext_resource type="Script" path="res://Scripts/tp.gd" id="1_ktoco"]
+[ext_resource type="Texture2D" uid="uid://bn2gpqf22lh6v" path="res://Assets/sprites/world_door_oldmetal.png" id="2_kvwg2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvr6t"]
+atlas = ExtResource("2_kvwg2")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6up6"]
+atlas = ExtResource("2_kvwg2")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gpe0b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvr6t")
+}],
+"loop": false,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6up6")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8rwi"]
+
+[node name="Teleport" type="Node2D"]
+script = ExtResource("1_ktoco")
+
+[node name="OldDoor" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_gpe0b")
+animation = &"close"
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_l8rwi")

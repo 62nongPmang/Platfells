@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://nss41kr3teha"]
+
+[ext_resource type="PackedScene" uid="uid://b0rya0hc3df0p" path="res://Scenes/npc_Base.tscn" id="1_l81t2"]
+
+[node name="NPC_Pipi" instance=ExtResource("1_l81t2")]
+npc_name = "Pipi"
+dialog_lines = Array[String](["그거 알아? 사실 네가 방금
+밟고 넘어온 그 블럭들은
+말이야...", "수줍음이 많은 세 쌍둥이가
+흘린 땀이 쌓여서 만들어진 거야..", "하하! 농담이야 나도 잘 몰라!
+설마 그런거겠어?"])
+
+[node name="NPCSprite" parent="." index="0"]
+animation = &"kidestonEblock"
+autoplay = "kidestonEblock"

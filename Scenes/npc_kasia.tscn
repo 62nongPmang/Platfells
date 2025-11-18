@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://csejjdm4yl4ke"]
+
+[ext_resource type="PackedScene" uid="uid://b0rya0hc3df0p" path="res://Scenes/npc_Base.tscn" id="1_ww3ur"]
+
+[node name="NPC_Kasia" instance=ExtResource("1_ww3ur")]
+npc_name = "Kasia"
+dialog_lines = Array[String](["야호~ 높은 곳 좋아해?"])
+
+[node name="NPCSprite" parent="." index="0"]
+animation = &"kidqstonEblock"
+autoplay = "kidqstonEblock"

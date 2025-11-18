@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfrkw8a0ns0w8"]
+
+[ext_resource type="PackedScene" uid="uid://b0rya0hc3df0p" path="res://Scenes/npc_Base.tscn" id="1_7it88"]
+
+[node name="NPC_K_min" instance=ExtResource("1_7it88")]
+npc_name = "K.min"
+dialog_lines = Array[String](["어, 반갑다.", "앞에 있는 병 보이지?
+이 병은 '단서' 야.", "병을 발견하거든,
+잘 따라가도록 해."])
+
+[node name="NPCSprite" parent="." index="0"]
+animation = &"talkingQblock"
+autoplay = "talingQblock"
+frame_progress = 0.0

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://wdgc644a7fr5"]
+
+[ext_resource type="PackedScene" uid="uid://b0rya0hc3df0p" path="res://Scenes/npc_Base.tscn" id="1_pgusp"]
+
+[node name="NPC_Jeju" instance=ExtResource("1_pgusp")]
+npc_name = "Jeju"
+dialog_lines = Array[String](["뭐야! 어디서 나타난 거야!", "6번째 코인은 여기 없어.", "나? 난 와피쑤를 찾아 
+모험을 하는 중이야."])
+
+[node name="NPCSprite" parent="." index="0"]
+frame_progress = 0.0
+
+[node name="LabelScale" parent="." index="3"]
+visible = false
+
+[node name="NameLabel" parent="LabelScale" index="0"]
+offset_top = 11.6667
+offset_bottom = 23.6667

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba00igpx36v0k"]
+
+[ext_resource type="PackedScene" uid="uid://b0rya0hc3df0p" path="res://Scenes/npc_Base.tscn" id="1_vnweq"]
+
+[node name="NPC_Taepyo" instance=ExtResource("1_vnweq")]
+npc_name = "Taepyo"
+dialog_lines = Array[String](["와! 사람은 오랜만이네!
+반가우니까 좋은 정보를 줄게!", "다들 코인이 5개 까지
+밖에 없는 줄 아는데,
+실은 6번째 코인도 있어.", "그리고 어쩌면 글쎄,
+..이 성 안 어딘가에
+있을 지도?"])
+
+[node name="NPCSprite" parent="." index="0"]
+animation = &"talkingEstoneblock"
+autoplay = "talkingEstoneblock"
