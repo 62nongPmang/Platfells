@@ -7,9 +7,6 @@ npc_name = "Jeju"
 dialog_lines = Array[String](["뭐야! 어디서 나타난 거야!", "6번째 코인은 여기 없어.", "나? 난 와피쑤를 찾아 
 모험을 하는 중이야."])
 
-[node name="NPCSprite" parent="." index="0"]
-frame_progress = 0.0
-
 [node name="LabelScale" parent="." index="3"]
 visible = false
 

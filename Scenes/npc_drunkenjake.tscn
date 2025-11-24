@@ -4,7 +4,10 @@
 
 [node name="NPC_Base" instance=ExtResource("1_yyske")]
 npc_name = "Drunken Jake"
-dialog_lines = Array[String]([])
+dialog_lines = Array[String](["z....zZ.....", "....드르렁.....", "....퓨~~", "(괜히 말 걸었다는 생각이 든다.)"])
 
 [node name="NPCSprite" parent="." index="0"]
 autoplay = "drunkenQblock"
+
+[node name="CollisionShape2D" parent="." index="1"]
+disabled = true

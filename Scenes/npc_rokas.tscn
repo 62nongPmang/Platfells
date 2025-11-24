@@ -11,6 +11,7 @@ dialog_lines = Array[String](["다들 나에게 그만
 여기 있는 건데...", "내가 뭔가 잘못한 걸까?"])
 
 [node name="NPCSprite" parent="." index="0"]
+animation = &"rokasQblock"
 autoplay = "rokasQblock"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]

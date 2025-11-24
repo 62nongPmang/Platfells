@@ -27,7 +27,7 @@ func play_door_close():
 	await anim.animation_finished
 
 func _unhandled_input(event):
-	if player_ref != null and event.is_action_pressed("advance_dialog") and not is_teleporting:
+	if player_ref != null and event.is_action_pressed("interaction") and not is_teleporting:
 		
 		# 안전장치: 목적지와 반대편 문이 모두 연결되어 있어야 함
 		if destination_marker == null or linked_door == null:

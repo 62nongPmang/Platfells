@@ -17,8 +17,8 @@ func _ready():
 
 func _unhandled_input(event):
 	# 키를 눌렀을 때 로그를 찍어봅니다.
-	if event.is_action_pressed("advance_dialog"):
-		print("--- [DEBUG] 키 입력 감지됨 (advance_dialog) ---")
+	if event.is_action_pressed("interaction"):
+		print("--- [DEBUG] 키 입력 감지됨 (interaction) ---")
 		print("1. 범위 내 플레이어 있음?: ", player_in_range)
 		print("2. 문이 이미 열렸나?: ", is_open)
 		

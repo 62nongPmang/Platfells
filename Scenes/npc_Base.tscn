@@ -107,6 +107,12 @@ animations = [{
 "duration": 5.0,
 "texture": SubResource("AtlasTexture_b3tbr")
 }, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_sxlvr")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_b3tbr")
+}, {
 "duration": 0.7,
 "texture": SubResource("AtlasTexture_sxlvr")
 }],
@@ -230,14 +236,13 @@ animations = [{
 [node name="NPC_Base" type="StaticBody2D"]
 script = ExtResource("1_ctfs3")
 npc_name = "NPC_Base"
-dialog_lines = Array[String](["", "", ""])
+dialog_lines = Array[String](["", ""])
 
 [node name="NPCSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_cimgs")
-animation = &"drunkenQblock"
+animation = &"talkingQblock"
 autoplay = "talkingQblock"
-frame_progress = 0.00102809
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
@@ -248,6 +253,7 @@ position = Vector2(0, -8)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+visible = false
 shape = SubResource("CircleShape2D_2reqc")
 
 [node name="LabelScale" type="Node2D" parent="."]
