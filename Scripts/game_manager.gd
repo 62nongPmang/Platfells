@@ -2,7 +2,7 @@ extends Node
 
 var score = 0
 
-@onready var score_label: Label = $"../NPC/NPC_Big_Mac/ScoreLabel"
+@onready var score_label: Label = $"../Map_03/NPC_Big_Mac/ScoreLabel"
 
 
 
