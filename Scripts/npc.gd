@@ -3,7 +3,7 @@ extends StaticBody2D
 # [바리에이션용] 인스펙터에서 NPC 이름 및 상호작용 여부를 설정합니다.
 @export var npc_name: String = "NPC"
 @export var can_interact: bool = true
-
+#바보
 @onready var press_e: Label = $PressE
 @onready var interaction_area: Area2D = $InteractionArea
 

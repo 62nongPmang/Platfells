@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://qvvsbi2epy2j"]
+
+[ext_resource type="Script" path="res://Scripts/tp.gd" id="1_ktoco"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8rwi"]
+
+[node name="Teleport" type="Node2D"]
+script = ExtResource("1_ktoco")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_l8rwi")

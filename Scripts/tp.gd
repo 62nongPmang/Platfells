@@ -6,7 +6,7 @@ extends Node2D
 @export var linked_door: Node2D 
 
 @onready var interaction_area: Area2D = $InteractionArea
-@onready var anim: AnimatedSprite2D = $OldDoor
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
 
 var player_ref: CharacterBody2D = null 

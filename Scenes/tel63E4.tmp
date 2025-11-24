@@ -3,19 +3,19 @@
 [ext_resource type="Script" path="res://Scripts/tp.gd" id="1_ktoco"]
 [ext_resource type="Texture2D" uid="uid://bn2gpqf22lh6v" path="res://Assets/sprites/world_door_oldmetal.png" id="2_kvwg2"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4o6vq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh015"]
 atlas = ExtResource("2_kvwg2")
 region = Rect2(0, 0, 64, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bthqc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdri6"]
 atlas = ExtResource("2_kvwg2")
 region = Rect2(64, 0, 64, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_qyu15"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_66seh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4o6vq")
+"texture": SubResource("AtlasTexture_fh015")
 }],
 "loop": false,
 "name": &"close",
@@ -23,7 +23,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bthqc")
+"texture": SubResource("AtlasTexture_vdri6")
 }],
 "loop": false,
 "name": &"open",
@@ -35,11 +35,10 @@ animations = [{
 [node name="Teleport" type="Node2D"]
 script = ExtResource("1_ktoco")
 
-[node name="OldDoor" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
-sprite_frames = SubResource("SpriteFrames_qyu15")
+sprite_frames = SubResource("SpriteFrames_66seh")
 animation = &"close"
-autoplay = "close"
 
 [node name="InteractionArea" type="Area2D" parent="."]
 collision_mask = 2

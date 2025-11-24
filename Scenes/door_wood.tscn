@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://ej6dnyy8me2f"]
+
+[ext_resource type="Script" path="res://Scripts/door.gd" id="1_mnm8n"]
+[ext_resource type="Texture2D" uid="uid://dnxh1mb5n40vn" path="res://Assets/sprites/world_doors.png" id="2_yalfh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w354e"]
+atlas = ExtResource("2_yalfh")
+region = Rect2(96, 96, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up0rl"]
+atlas = ExtResource("2_yalfh")
+region = Rect2(16, 32, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_580a7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w354e")
+}],
+"loop": false,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_up0rl")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20h06"]
+size = Vector2(6, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xjkxl"]
+radius = 16.0312
+
+[node name="Door_Wood" type="StaticBody2D"]
+script = ExtResource("1_mnm8n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_580a7")
+animation = &"open"
+
+[node name="WallCol" type="CollisionShape2D" parent="."]
+position = Vector2(-5, -16)
+shape = SubResource("RectangleShape2D_20h06")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(-5, -16)
+shape = SubResource("CircleShape2D_xjkxl")
