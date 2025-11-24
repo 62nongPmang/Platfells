@@ -1,9 +1,26 @@
-[gd_scene load_steps=27 format=3 uid="uid://b0rya0hc3df0p"]
+[gd_scene load_steps=32 format=3 uid="uid://b0rya0hc3df0p"]
 
 [ext_resource type="Texture2D" uid="uid://bbgsev1eocbmv" path="res://Assets/sprites/npc_block.png" id="1_a2v0o"]
 [ext_resource type="Script" path="res://Scripts/npc_Base.gd" id="1_ctfs3"]
+[ext_resource type="Texture2D" uid="uid://f4rlsc6ohp4j" path="res://Assets/sprites/npc_block_02.png" id="2_gsr6v"]
 [ext_resource type="FontFile" uid="uid://c0wdpxecihxoq" path="res://Assets/fonts/lanapixel_everything/LanaPixel.ttf" id="3_trp34"]
 [ext_resource type="Texture2D" uid="uid://dipuvvipltnb0" path="res://ui/interaction_Bottons.png" id="4_ajhsw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvuy5"]
+atlas = ExtResource("2_gsr6v")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02hcf"]
+atlas = ExtResource("2_gsr6v")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3tbr"]
+atlas = ExtResource("2_gsr6v")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxlvr"]
+atlas = ExtResource("2_gsr6v")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xyvxs"]
 atlas = ExtResource("1_a2v0o")
@@ -71,6 +88,32 @@ region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cimgs"]
 animations = [{
+"frames": [{
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_mvuy5")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_02hcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvuy5")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_b3tbr")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_sxlvr")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_b3tbr")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_sxlvr")
+}],
+"loop": true,
+"name": &"drunkenQblock",
+"speed": 3.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xyvxs")
@@ -192,8 +235,9 @@ dialog_lines = Array[String](["", "", ""])
 [node name="NPCSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_cimgs")
-animation = &"rokasQblock"
+animation = &"drunkenQblock"
 autoplay = "talkingQblock"
+frame_progress = 0.00102809
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
@@ -211,6 +255,7 @@ position = Vector2(0, -6)
 scale = Vector2(0.6, 0.6)
 
 [node name="NameLabel" type="Label" parent="LabelScale"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -232,7 +277,7 @@ horizontal_alignment = 1
 
 [node name="PressE" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(0, -28)
+position = Vector2(0, -22)
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_eypu7")
 animation = &"press_e"

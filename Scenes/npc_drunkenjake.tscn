@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b56i7yfq0qi4l"]
+
+[ext_resource type="PackedScene" uid="uid://b0rya0hc3df0p" path="res://Scenes/npc_Base.tscn" id="1_yyske"]
+
+[node name="NPC_Base" instance=ExtResource("1_yyske")]
+npc_name = "Drunken Jake"
+dialog_lines = Array[String]([])
+
+[node name="NPCSprite" parent="." index="0"]
+autoplay = "drunkenQblock"
