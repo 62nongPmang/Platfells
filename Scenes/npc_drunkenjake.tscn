@@ -1,10 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://b56i7yfq0qi4l"]
+[gd_scene load_steps=4 format=3 uid="uid://b56i7yfq0qi4l"]
 
 [ext_resource type="PackedScene" uid="uid://b0rya0hc3df0p" path="res://Scenes/npc_Base.tscn" id="1_yyske"]
+[ext_resource type="Script" path="res://Scripts/dialogue_branch.gd" id="2_858r1"]
+
+[sub_resource type="Resource" id="Resource_1yyf1"]
+script = ExtResource("2_858r1")
+min_score = -1
+max_score = 9999
+min_interactions = -1
+max_interactions = 9999
+lines = Array[String]([""])
 
 [node name="NPC_Base" instance=ExtResource("1_yyske")]
 npc_name = "Drunken Jake"
-dialog_lines = Array[String](["z....zZ.....", "....드르렁.....", "....퓨~~", "(괜히 말 걸었다는 생각이 든다.)"])
+dialogue_branches = Array[ExtResource("2_858r1")]([SubResource("Resource_1yyf1")])
 
 [node name="NPCSprite" parent="." index="0"]
 animation = &"drunkenQblock"
