@@ -4,9 +4,9 @@
 
 [node name="NPC_York" instance=ExtResource("1_ms3ic")]
 npc_name = "York"
-dialog_lines = Array[String](["어서와. 난 입구의 경비병 York.
-맞아. 계란은 노른자가 제일 맛있지.", "이제 성주님은 없지만...
-찾는 게 있다면 편하게 구경해도 돼.", "음 물론 가면 안되는 곳도 있긴 하지.
+dialog_lines = Array[String](["어서와. 난 성 입구를 지키는
+경비병이야? 이었어? 아무튼..", "이제 성주님은 없지만...
+찾는 게 있다면 편하게 구경해도 돼.", "음. 물론 가면 안되는 곳도 있긴 하지.
 가령 탈의실이라던가..."])
 
 [node name="NPCSprite" parent="." index="0"]

@@ -7,5 +7,5 @@ npc_name = "Kasia"
 dialog_lines = Array[String](["야호~ 높은 곳 좋아해?"])
 
 [node name="NPCSprite" parent="." index="0"]
-animation = &"kidqstonEblock"
-autoplay = "kidqstonEblock"
+animation = &"kidQstoneblock"
+autoplay = "kidQstoneblock"

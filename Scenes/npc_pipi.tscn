@@ -11,5 +11,5 @@ dialog_lines = Array[String](["그거 알아? 사실 네가 방금
 설마 그런거겠어?"])
 
 [node name="NPCSprite" parent="." index="0"]
-animation = &"kidestonEblock"
-autoplay = "kidestonEblock"
+animation = &"kidEstoneblock"
+autoplay = "kidEstoneblock"

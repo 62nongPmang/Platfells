@@ -12,5 +12,6 @@ dialog_lines = Array[String](["와! 사람은 오랜만이네!
 있을 지도?"])
 
 [node name="NPCSprite" parent="." index="0"]
-animation = &"talkingEstoneblock"
-autoplay = "talkingEstoneblock"
+animation = &"talkingQstoneblock"
+autoplay = "talkingQstoneblock"
+frame_progress = 0.0

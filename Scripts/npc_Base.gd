@@ -5,8 +5,7 @@ extends StaticBody2D
 
 # NPC가 가질 고유의 대사 (인스펙터 창에서 직접 입력)
 @export_multiline var dialog_lines: Array[String] = [
-	"첫마디.",
-	"요소 추가 혹은 삭제로 마디 추가 가능.",
+	"",
 ]
 @onready var name_label: Label = $LabelScale/NameLabel
 @onready var interaction_area: Area2D = $InteractionArea
@@ -38,7 +37,7 @@ func _ready():
 	interaction_area.monitoring = true
 
 
-# _process를 사용하여 "Press E" 아이콘을 관리 (이 방식이 대화중일 때 아이콘을 숨기기에 가장 좋습니다.)
+# _process를 사용하여 "Press E" 아이콘을 관리
 func _process(_delta):
 	if not press_e_bottn: return # E 아이콘이 없으면 실행 안 함
 	if not can_interact: return
@@ -53,23 +52,23 @@ func _process(_delta):
 
 # 상호작용 키 입력 처리
 func _unhandled_input(event):
-	# 1. 플레이어가 범위 안에 있고
-	# 2. 'advance_dialog' 액션이 눌렸고 (E키 등)
-	# 3. 현재 대화가 활성화 상태가 아닐 때만 대화를 '시작'합니다.
 	if (
 		player_in_range and
 		event.is_action_pressed("advance_dialog") and
 		not DialogueManager.is_dialog_active
 	):
-		# 이 입력을 '처리됨'으로 설정합니다.
-		# 이렇게 하지 않으면, 이 키 입력이 DialogueManager의 _unhandled_input에도
-		# 전달되어, 대화가 시작되자마자 첫 줄이 스킵되는 버그가 발생합니다.
 		get_tree().root.set_input_as_handled()
 		
-		# Autoload로 등록한 DialogueManager를 호출합니다.
-		# 위치: 이 NPC의 위치 (text_box.gd가 이 위치를 기준으로 오프셋을 계산함)
-		# 대사: 이 NPC가 가진 dialog_lines
-		DialogueManager.start_dialog(global_position, dialog_lines)
+		var final_lines: Array[String] = dialog_lines.duplicate()
+		
+		# 2. 모든 대사 줄을 검사하여 "{score}" 라는 글자를 실제 점수로 바꿉니다.
+		for i in range(final_lines.size()):
+			if "{score}" in final_lines[i]:
+				# "{score}" 부분을 GameManager.score 값으로 교체
+				final_lines[i] = final_lines[i].replace("{score}", str(GameManager.score))
+		
+		# 3. 가공된 대사(final_lines)를 DialogueManager에게 넘깁니다.
+		DialogueManager.start_dialog(global_position, final_lines)
 
 
 func _on_body_entered(body: Node2D) -> void:

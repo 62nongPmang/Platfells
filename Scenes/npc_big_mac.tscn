@@ -9,7 +9,6 @@ dialog_lines = Array[String]([])
 [node name="NPCSprite" parent="." index="0"]
 animation = &"talkingEstoneblock"
 autoplay = "talkingEstoneblock"
-frame_progress = 0.0
 
 [node name="PressE" parent="." index="4"]
 visible = false

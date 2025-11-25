@@ -10,4 +10,3 @@ dialog_lines = Array[String](["어, 그래 난 K.min. 만나서 반갑다.", "�
 
 [node name="NPCSprite" parent="." index="0"]
 animation = &"talkingQblock"
-autoplay = "talingQblock"
