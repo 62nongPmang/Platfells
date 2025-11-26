@@ -1,5 +1,6 @@
 extends Node
 
+
 signal dialog_started
 signal dialog_ended
 
@@ -42,8 +43,7 @@ func _show_text_box():
 	
 	can_advance_line = false
 	
-	# 여기서 dialog_lines가 비어있으면 에러가 났던 것입니다.
-	# 위에서 안전장치를 했으므로 이제 안전합니다.
+
 	text_box.display_text(dialog_lines[current_line_index])
 	
 	
@@ -61,9 +61,6 @@ func _unhandled_input(event):
 		# 1. 텍스트가 다 표시되어서 다음 줄로 넘길 수 있을 때
 		if can_advance_line:
 			
-			# [수정 2: 중복 코드 삭제]
-			# 아까 코드에는 queue_free()가 두 번 적혀 있었습니다.
-			# 아래의 안전한 버전 하나만 남겨야 합니다.
 			if is_instance_valid(text_box):
 				text_box.queue_free()
 			

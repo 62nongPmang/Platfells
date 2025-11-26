@@ -4,4 +4,7 @@
 
 [node name="NPC_OldEddy" instance=ExtResource("1_rvwgo")]
 npc_name = "OldEddy"
-can_interact = true
+
+[node name="NPCSprite" parent="." index="0"]
+animation = &"oldEblock"
+autoplay = "oldEblock"

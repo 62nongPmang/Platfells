@@ -230,38 +230,36 @@ size = Vector2(16, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_2reqc"]
 radius = 24.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yqqwx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_04kmr"]
 atlas = ExtResource("4_ajhsw")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ojt31"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrou7"]
 atlas = ExtResource("4_ajhsw")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eypu7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yqqwx")
+"texture": SubResource("AtlasTexture_04kmr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ojt31")
+"texture": SubResource("AtlasTexture_jrou7")
 }],
 "loop": true,
-"name": &"press_e",
+"name": &"press_X",
 "speed": 2.0
 }]
 
 [node name="NPC_Base" type="StaticBody2D"]
 script = ExtResource("1_ctfs3")
 npc_name = "NPC_Base"
-can_interact = null
-dialog_lines = null
 
 [node name="NPCSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_cimgs")
-animation = &"oldEblock"
+animation = &"talkingQblock"
 autoplay = "talkingQblock"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -306,9 +304,8 @@ z_index = 1
 position = Vector2(0, -22)
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_eypu7")
-animation = &"press_e"
-autoplay = "press_e"
-frame_progress = 0.927921
+animation = &"press_X"
+autoplay = "press_X"
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_entered" from="InteractionArea" to="NPCSprite" method="_on_interaction_area_body_entered"]

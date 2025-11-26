@@ -2,16 +2,17 @@
 
 [ext_resource type="Texture2D" uid="uid://bxv5ub5jylo6d" path="res://Assets/sprites/platforms.png" id="1_0rufv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_blhbs"]
-size = Vector2(30, 6)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rct42"]
+size = Vector2(30, 8)
 
 [node name="AnimatableBody2D" type="AnimatableBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 3.5)
 texture = ExtResource("1_0rufv")
 region_enabled = true
-region_rect = Rect2(16, 48, 32, 9)
+region_rect = Rect2(16, 48, 32, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_blhbs")
+shape = SubResource("RectangleShape2D_rct42")
 one_way_collision = true

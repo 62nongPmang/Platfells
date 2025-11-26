@@ -6,9 +6,6 @@
 
 [node name="NPC_Rokas" instance=ExtResource("1_3v6pi")]
 npc_name = "Rokas"
-dialog_lines = Array[String](["다들 나에게 그만
-부딪혀주면 좋겠어..", "나는 사람들을 도와주려고
-여기 있는 건데...", "내가 뭔가 잘못한 걸까?"])
 
 [node name="NPCSprite" parent="." index="0"]
 animation = &"rokasQblock"
@@ -22,3 +19,6 @@ polygon = PackedVector2Array(-8, 5, -8, -8, 8, -8, 8, 8, -1, 8)
 [node name="CollisionShape2D" parent="." index="2"]
 visible = false
 shape = SubResource("ConcavePolygonShape2D_jcfuj")
+
+[node name="PressE" parent="." index="5"]
+visible = true

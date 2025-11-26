@@ -4,9 +4,6 @@
 
 [node name="NPC_Sarah" instance=ExtResource("1_gi3ql")]
 npc_name = "Sarah"
-dialog_lines = Array[String](["안녕! 우리 [ ? ]들은
-알려주는 걸 좋아해!", "우리의 '조언' 을
-놓치지 말라고!"])
 
-[node name="NPCSprite" parent="." index="0"]
-animation = &"talkingQblock"
+[node name="PressE" parent="." index="4"]
+visible = true

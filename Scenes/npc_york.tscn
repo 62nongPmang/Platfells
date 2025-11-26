@@ -1,14 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://gfjg0i05q60b"]
+[gd_scene load_steps=4 format=3 uid="uid://gfjg0i05q60b"]
 
 [ext_resource type="PackedScene" uid="uid://b0rya0hc3df0p" path="res://Scenes/npc_Base.tscn" id="1_ms3ic"]
+[ext_resource type="Texture2D" uid="uid://doh6e3y66fd3w" path="res://Assets/sprites/acc_tileset.png" id="2_rfelk"]
+[ext_resource type="Texture2D" uid="uid://bqk4moe6iucyb" path="res://Assets/sprites/npc_acc_tileset.png" id="3_v51dx"]
 
 [node name="NPC_York" instance=ExtResource("1_ms3ic")]
 npc_name = "York"
-dialog_lines = Array[String](["어서와. 난 성 입구를 지키는
-경비병이야? 이었어? 아무튼..", "이제 성주님은 없지만...
-찾는 게 있다면 편하게 구경해도 돼.", "음. 물론 가면 안되는 곳도 있긴 하지.
-가령 탈의실이라던가..."])
 
-[node name="NPCSprite" parent="." index="0"]
+[node name="ACC_01" type="Sprite2D" parent="." index="0"]
+position = Vector2(-4, -13)
+rotation = 1.0472
+texture = ExtResource("2_rfelk")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="NPCSprite" parent="." index="1"]
 animation = &"talkingEstoneblock"
 autoplay = "talkingEstoneblock"
+frame_progress = 0.691457
+
+[node name="ACC_02" type="Sprite2D" parent="." index="6"]
+position = Vector2(1, -15)
+texture = ExtResource("3_v51dx")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)

@@ -5,14 +5,17 @@
 
 [sub_resource type="Resource" id="Resource_1yyf1"]
 script = ExtResource("2_858r1")
+use_score_condition = false
 min_score = -1
 max_score = 9999
+use_interaction_condition = false
 min_interactions = -1
 max_interactions = 9999
 lines = Array[String]([""])
 
 [node name="NPC_DrunkenJake" instance=ExtResource("1_yyske")]
 npc_name = "Drunken Jake"
+can_interact = true
 dialogue_branches = Array[ExtResource("2_858r1")]([SubResource("Resource_1yyf1")])
 
 [node name="NPCSprite" parent="." index="0"]
