@@ -4,8 +4,4 @@
 
 [node name="NPC_OldEddy" instance=ExtResource("1_rvwgo")]
 npc_name = "OldEddy"
-dialog_lines = Array[String](["반갑네. 입구의 Rokas를 봤는가?", "참으로 좋은 녀석이지.
-자네같은 사람들이 오면 친절하
-움직이는 방법을 알려주고 있어.", "안타깝게도, 오는 사람마다 녀석에게
-머리를 부딪혀대서 녀석의 모서리는
-블럭 가루를 흘리고 있네..."])
+can_interact = true

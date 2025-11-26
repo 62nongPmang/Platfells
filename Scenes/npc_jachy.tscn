@@ -2,12 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://b0rya0hc3df0p" path="res://Scenes/npc_Base.tscn" id="1_j42rt"]
 
-[node name="NPC_Base" instance=ExtResource("1_j42rt")]
+[node name="NPC_Jachy" instance=ExtResource("1_j42rt")]
 npc_name = "Jachy"
-dialog_lines = Array[String](["저 녀석은 맨날 저렇게 술이나
-마시고 잠들어 있다니까.", "얼마나 취했으면 본인 물리값까지
-꺼 놨다고.", "블럭의 본분을 잊다니...
-"])
 
 [node name="NPCSprite" parent="." index="0"]
 animation = &"talkingEstoneblock"

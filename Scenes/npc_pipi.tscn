@@ -1,14 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://nss41kr3teha"]
+[gd_scene load_steps=4 format=3 uid="uid://nss41kr3teha"]
 
 [ext_resource type="PackedScene" uid="uid://b0rya0hc3df0p" path="res://Scenes/npc_Base.tscn" id="1_l81t2"]
+[ext_resource type="Script" path="res://Scripts/dialogue_branch.gd" id="2_8idbq"]
+
+[sub_resource type="Resource" id="Resource_afejd"]
+script = ExtResource("2_8idbq")
+min_score = -1
+max_score = 9999
+min_interactions = -1
+max_interactions = 9999
+lines = Array[String]([""])
 
 [node name="NPC_Pipi" instance=ExtResource("1_l81t2")]
 npc_name = "Pipi"
-dialog_lines = Array[String](["그거 알아? 사실 네가 방금
-밟고 넘어온 그 블럭들은
-말이야...", "수줍음이 많은 세 쌍둥이가
-흘린 땀이 쌓여서 만들어진 거야..", "하하! 농담이야 나도 잘 몰라!
-설마 그런거겠어?"])
+dialogue_branches = Array[ExtResource("2_8idbq")]([SubResource("Resource_afejd")])
 
 [node name="NPCSprite" parent="." index="0"]
 animation = &"kidEstoneblock"

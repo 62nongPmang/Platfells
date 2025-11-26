@@ -1395,11 +1395,9 @@ can_interact = true
 
 [node name="NPC_K_min" parent="Map_01/NPC" instance=ExtResource("8_75yg0")]
 position = Vector2(297, -80)
-can_interact = true
 
 [node name="NPC_OldEddy" parent="Map_01/NPC" instance=ExtResource("5_pbx5c")]
 position = Vector2(345, -432)
-can_interact = true
 
 [node name="NPC_ShySandy" type="AnimatedSprite2D" parent="Map_01/NPC"]
 position = Vector2(457, -40)
@@ -1627,7 +1625,6 @@ can_interact = true
 
 [node name="NPC_Big_Mac" parent="Map_03" instance=ExtResource("6_86j66")]
 position = Vector2(2072, -416)
-can_interact = true
 
 [node name="ScoreLabel" type="Label" parent="Map_03/NPC_Big_Mac"]
 anchors_preset = 15

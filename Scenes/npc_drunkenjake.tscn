@@ -11,11 +11,12 @@ min_interactions = -1
 max_interactions = 9999
 lines = Array[String]([""])
 
-[node name="NPC_Base" instance=ExtResource("1_yyske")]
+[node name="NPC_DrunkenJake" instance=ExtResource("1_yyske")]
 npc_name = "Drunken Jake"
 dialogue_branches = Array[ExtResource("2_858r1")]([SubResource("Resource_1yyf1")])
 
 [node name="NPCSprite" parent="." index="0"]
+position = Vector2(-2, -8)
 animation = &"drunkenQblock"
 autoplay = "drunkenQblock"
 

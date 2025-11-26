@@ -4,7 +4,7 @@
 
 [node name="NPC_Big_Mac" instance=ExtResource("1_pfska")]
 npc_name = "Big.Mac"
-dialog_lines = Array[String]([])
+can_interact = true
 
 [node name="NPCSprite" parent="." index="0"]
 animation = &"talkingEstoneblock"

@@ -3,10 +3,13 @@ extends StaticBody2D
 @export var npc_name: String = "NPC_name"
 @export var can_interact: bool = true
 
-# NPC가 가질 고유의 대사 (인스펙터 창에서 직접 입력)
-@export_multiline var dialog_lines: Array[String] = [
-	"",
-]
+# [핵심 변경] 단순 대사 배열 대신, '분기(Branch) 목록'을 가집니다.
+# 인스펙터에서 여러 개의 조건을 추가할 수 있습니다.
+@export var dialogue_branches: Array[DialogueBranch] = []
+
+# [기본 대사] 아무 조건도 맞지 않을 때 나올 대사 (안전장치)
+@export_multiline var default_lines: Array[String] = [""]
+
 @onready var name_label: Label = $LabelScale/NameLabel
 @onready var interaction_area: Area2D = $InteractionArea
 @onready var press_e_bottn: AnimatedSprite2D = $PressE if has_node("PressE") else null
@@ -51,6 +54,7 @@ func _process(_delta):
 
 
 # 상호작용 키 입력 처리
+# 상호작용 키 입력 처리
 func _unhandled_input(event):
 	if (
 		player_in_range and
@@ -59,15 +63,26 @@ func _unhandled_input(event):
 	):
 		get_tree().root.set_input_as_handled()
 		
-		var final_lines: Array[String] = dialog_lines.duplicate()
+		# [1. 대사 결정 로직]
+		var target_lines: Array[String] = default_lines # 일단 기본 대사로 설정
+		var current_score = GameManager.score
 		
-		# 2. 모든 대사 줄을 검사하여 "{score}" 라는 글자를 실제 점수로 바꿉니다.
+		# 등록된 모든 분기들을 하나씩 검사합니다.
+		for branch in dialogue_branches:
+			# 내 점수가 해당 분기의 조건(최소~최대) 사이에 있다면?
+			if current_score >= branch.min_score and current_score <= branch.max_score:
+				target_lines = branch.lines
+				break # 조건을 찾았으니 더 이상 검사하지 않고 루프 종료 (우선순위: 위쪽이 높음)
+		
+		
+		# [2. 텍스트 치환 로직 ({score} -> 점수)]
+		var final_lines: Array[String] = target_lines.duplicate()
+		
 		for i in range(final_lines.size()):
 			if "{score}" in final_lines[i]:
-				# "{score}" 부분을 GameManager.score 값으로 교체
 				final_lines[i] = final_lines[i].replace("{score}", str(GameManager.score))
 		
-		# 3. 가공된 대사(final_lines)를 DialogueManager에게 넘깁니다.
+		# [3. 대화 시작]
 		DialogueManager.start_dialog(global_position, final_lines)
 
 
