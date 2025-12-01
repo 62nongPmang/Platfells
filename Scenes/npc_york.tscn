@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b0rya0hc3df0p" path="res://Scenes/npc_Base.tscn" id="1_ms3ic"]
 [ext_resource type="Texture2D" uid="uid://doh6e3y66fd3w" path="res://Assets/sprites/acc_tileset.png" id="2_rfelk"]
-[ext_resource type="Texture2D" uid="uid://bqk4moe6iucyb" path="res://Assets/sprites/npc_acc_tileset.png" id="3_v51dx"]
+[ext_resource type="Texture2D" uid="uid://doh6e3y66fd3w" path="res://Assets/sprites/acc_tileset.png" id="3_v51dx"]
 
 [node name="NPC_York" instance=ExtResource("1_ms3ic")]
 npc_name = "York"
