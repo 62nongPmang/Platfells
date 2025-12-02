@@ -16,6 +16,12 @@ func _ready():
 	DialogueManager.dialog_started.connect(_on_dialog_started)
 		# 'dialog_ended' 신호가 오면 '_on_dialog_ended' 함수를 실행합니다.
 	DialogueManager.dialog_ended.connect(_on_dialog_ended)
+	# [추가] 저장된 체크포인트가 있다면 거기로 순간이동!
+	if GameManager.has_checkpoint:
+		global_position = GameManager.last_checkpoint_pos
+		
+		# (팁) 땅에 박히는 걸 방지하기 위해 y축을 살짝 위로 띄워주면 좋습니다.
+		# global_position.y -= 10
 
 func _physics_process(delta: float) -> void:
 	# --- 1. 중력 (항상 적용) ---

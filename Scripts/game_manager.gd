@@ -13,6 +13,13 @@ var npc_interaction_counts: Dictionary = {}
 var quit_timer: float = 0.0
 const QUIT_DURATION: float = 3.0 # 3초
 
+# 마지막 세이브 위치 (Vector2)
+var last_checkpoint_pos: Vector2 = Vector2.ZERO
+
+# 세이브 포인트가 한 번이라도 찍혔는지 확인
+var has_checkpoint: bool = false
+
+
 func _process(delta: float) -> void:
 	# ESC 키(ui_cancel)를 누르고 있는지 확인
 	# (Godot 기본 설정에서 ui_cancel은 ESC에 매핑되어 있습니다)

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1o34berpc0ig"]
+
+[ext_resource type="Script" path="res://Scripts/teleport.gd" id="1_jrjh6"]
+[ext_resource type="Texture2D" uid="uid://dnxh1mb5n40vn" path="res://Assets/sprites/world_doors.png" id="2_tp5nf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngkkf"]
+atlas = ExtResource("2_tp5nf")
+region = Rect2(0, 96, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u4426"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngkkf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46t1q"]
+
+[node name="TP_Empty" type="Node2D"]
+script = ExtResource("1_jrjh6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -3)
+sprite_frames = SubResource("SpriteFrames_u4426")
+animation = &"idle"
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_46t1q")

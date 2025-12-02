@@ -19,7 +19,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"close",
-"speed": 2.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -27,7 +27,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"open",
-"speed": 2.0
+"speed": 1.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y65mq"]
