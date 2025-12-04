@@ -10,6 +10,39 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var jump_sound: AudioStreamPlayer2D = $JumpSound
 
+const LOAD_BUBBLE_SCENE = preload("res://ui/Load_box.tscn")
+
+var is_loading_menu_open: bool = false
+
+func _unhandled_input(event):
+	# Z키(open_load_menu)를 눌렀고 + 메뉴가 안 열려있고 + 움직일 수 있는 상태라면
+	if event.is_action_pressed("open_load_menu") and not is_loading_menu_open and can_move:
+		open_load_bubble()
+
+func open_load_bubble():
+	is_loading_menu_open = true
+	
+	# 1. 플레이어 행동 정지 (메뉴 조작 중 이동 방지)
+	can_move = false
+	set_physics_process(false) 
+	velocity = Vector2.ZERO # 미끄러짐 방지
+	
+	# 애니메이션을 멈추거나 Idle로 변경 (있다면)
+	# if anim: anim.play("idle")
+	
+	# 2. 말풍선 생성 및 부착
+	var bubble = LOAD_BUBBLE_SCENE.instantiate()
+	add_child(bubble) # 플레이어의 자식으로 붙습니다.
+	
+	# 3. 말풍선이 닫힐 때(사라질 때)를 감지해서 플레이어 조작 복구
+	bubble.tree_exiting.connect(_on_load_bubble_closed)
+
+# 말풍선이 queue_free() 되어 사라질 때 자동으로 실행됨
+func _on_load_bubble_closed():
+	is_loading_menu_open = false
+	can_move = true
+	set_physics_process(true)
+
 func _ready():
 	# DialogueManager의 'dialog_started' 신호가 오면
 	# 이 스크립트의 '_on_dialog_started' 함수를 실행합니다.

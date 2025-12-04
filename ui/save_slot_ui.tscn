@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnlrtl4l8lfsv"]
+
+[ext_resource type="Script" path="res://ui/save_slot_ui.gd" id="1_5b5ib"]
+[ext_resource type="Texture2D" uid="uid://c8eix6jjar3tn" path="res://Assets/sprites/SavePoints_01.png" id="2_o75nm"]
+[ext_resource type="FontFile" uid="uid://c0wdpxecihxoq" path="res://Assets/fonts/lanapixel_everything/LanaPixel.ttf" id="3_hlgij"]
+
+[node name="SaveSlotUI" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_5b5ib")
+
+[node name="IconHolder" type="Control" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="IconHolder"]
+position = Vector2(8, 8)
+texture = ExtResource("2_o75nm")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="SlotLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_hlgij")
+theme_override_font_sizes/font_size = 11
+text = "SlotLabel"
+horizontal_alignment = 1
+vertical_alignment = 1

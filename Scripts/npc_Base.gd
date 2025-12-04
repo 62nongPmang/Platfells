@@ -59,7 +59,7 @@ func _process(_delta):
 func _unhandled_input(event):
 	if (
 		player_in_range and
-		event.is_action_pressed("advance_dialog") and
+		event.is_action_pressed("interaction") and
 		not DialogueManager.is_dialog_active
 	):
 		get_tree().root.set_input_as_handled()
