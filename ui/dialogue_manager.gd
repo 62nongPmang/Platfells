@@ -53,7 +53,7 @@ func _on_text_box_finished_displaying():
 
 func _unhandled_input(event):
 	if (
-		(event.is_action_pressed("advance_dialog", true) or event.is_action_pressed("jump")) and
+		(event.is_action_pressed("interaction", true) or event.is_action_pressed("jump")) and
 		is_dialog_active
 	):
 		get_tree().root.set_input_as_handled()
