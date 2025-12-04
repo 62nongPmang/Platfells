@@ -27,7 +27,7 @@ func _ready():
 
 
 func display_text(text_to_display: String):
-	was_skipped = false # [A: 추가] 새 대사를 시작할 때 플래그를 리셋
+	was_skipped = false # 새 대사를 시작할 때 플래그를 리셋
 	text = text_to_display
 	label.text = text_to_display
 	
@@ -42,21 +42,19 @@ func display_text(text_to_display: String):
 	
 	
 	global_position.x -= size.x / 2
-	global_position.y -= size.y + 24
+	global_position.y -= size.y + 16
 	
-	# [B: 추가] 
 	# 만약 'await' 중에 skip_to_end()가 호출되었다면 (플래그가 true라면)
 	# 여기서 즉시 함수를 종료하고, 텍스트를 리셋하지 않습니다.
 	if was_skipped:
 		return
 	
 	label.text = ""
-	letter_index = 0 # [추가] 대화 시작 시 인덱스 초기화
+	letter_index = 0 # 대화 시작 시 인덱스 초기화
 	_display_letter()
 	
 
 func _display_letter():
-	# [버그 수정] 
 	# 간혹 인덱스가 길이를 초과한 상태로 호출될 수 있으므로 방어 코드 추가
 	if letter_index >= text.length():
 		finished_displaying.emit()

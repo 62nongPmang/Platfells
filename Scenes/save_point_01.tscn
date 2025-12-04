@@ -643,8 +643,6 @@ animation = &"savepoint_01"
 autoplay = "savepoint_01"
 frame_progress = 0.355463
 
-[node name="GetBox" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_kdbok")
-
-[node name="Respawn Box" type="CollisionShape2D" parent="."]

@@ -1600,7 +1600,7 @@ _data = {
 
 [sub_resource type="Curve2D" id="Curve2D_7qm1q"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -89, -1, 0, 0, 0, 0, -89, 8, 0, 0, 0, 0, 551, 8, 0, 0, 0, 0, 551, -296, 0, 0, 0, 0, 1047, -296, 0, 0, 0, 0, 1047, -528)
+"points": PackedVector2Array(0, 0, 0, 0, -153, -32, 0, 0, 0, 0, -153, 8, 0, 0, 0, 0, 551, 8, 0, 0, 0, 0, 551, -296, 0, 0, 0, 0, 1047, -296, 0, 0, 0, 0, 1047, -528)
 }
 point_count = 6
 
@@ -1701,7 +1701,7 @@ layer_3/tile_data = PackedInt32Array(-1245159, 65537, 0, -1179623, 65537, 1, -11
 
 [node name="TP_A1" parent="Map_01" node_paths=PackedStringArray("destination", "linked_tp", "camera_path") instance=ExtResource("8_0ho7x")]
 z_index = -1
-position = Vector2(36, 48)
+position = Vector2(-29, 16)
 destination = NodePath("../../Map_02/TP_A2/Marker2D")
 linked_tp = NodePath("../../Map_02/TP_A2")
 travel_time = 6.0
@@ -1951,7 +1951,6 @@ libraries = {
 autoplay = "move"
 
 [node name="PlatformRock2" parent="Map_02" instance=ExtResource("18_fx7p5")]
-z_index = 1
 position = Vector2(800, -475)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Map_02/PlatformRock2"]
@@ -2035,6 +2034,9 @@ position = Vector2(1064, -400)
 npc_id = "Jachy_castle"
 dialogue_branches = Array[ExtResource("11_jaebg")]([SubResource("Resource_1j8if")])
 default_lines = Array[String](["블럭의 본분을 잊다니..."])
+
+[node name="SavePoint" parent="Map_02/NPC" instance=ExtResource("32_ldaan")]
+position = Vector2(376, -249)
 
 [node name="Coins" type="Node2D" parent="Map_02"]
 
@@ -2131,12 +2133,6 @@ position = Vector2(0, 185)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 shape = SubResource("WorldBoundaryShape2D_ivpsj")
-
-[node name="SavePoint" type="Node2D" parent="."]
-position = Vector2(596, -425)
-
-[node name="SavePoint" parent="SavePoint" instance=ExtResource("32_ldaan")]
-position = Vector2(320, -65)
 
 [node name="Path" type="Node2D" parent="."]
 

@@ -19,14 +19,12 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46t1q"]
-size = Vector2(20, 14)
 
-[node name="TP_Hole" type="Node2D"]
+[node name="TP_Empty" type="Node2D"]
 script = ExtResource("1_jrjh6")
-tp_type = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2, -3)
+position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_u4426")
 animation = &"idle"
 
@@ -34,5 +32,5 @@ animation = &"idle"
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-position = Vector2(0, -7)
+position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_46t1q")

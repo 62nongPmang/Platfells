@@ -1,137 +1,66 @@
 # GameManager.gd
 extends Node
 
-# --- 게임 데이터 변수들 ---
-var score: int = 0
+# 1. 점수 관리
+var score = 0
+
+# 2. NPC 대화 횟수 관리 (추가된 부분)
+# NPC의 ID를 키(Key)로, 만난 횟수를 값(Value)으로 저장하는 사전입니다.
+# 예: { "npc_bigmac": 3, "npc_girl": 1 }
 var npc_interaction_counts: Dictionary = {}
-var collected_coins: Array = []
 
-# --- [복구됨] 임시 세이브/롤백용 변수 (오류 해결 핵심) ---
+# 종료 타이머 변수
+var quit_timer: float = 0.0
+const QUIT_DURATION: float = 3.0 # 3초
+
+# 마지막 세이브 위치 (Vector2)
 var last_checkpoint_pos: Vector2 = Vector2.ZERO
+
+# 세이브 포인트가 한 번이라도 찍혔는지 확인
 var has_checkpoint: bool = false
-var checkpoint_data: Dictionary = {}
-
-# --- 세이브 시스템 변수 ---
-var current_slot_id: int = -1 
-const SAVE_PATH_TEMPLATE = "user://save_%d.dat"
 
 
-# --- [기능 1] 파일에 영구 저장 (슬롯) ---
-func save_game_to_slot(slot_id: int, pos: Vector2):
-	current_slot_id = slot_id
-	
-	# 임시 변수들도 업데이트 (죽었을 때 바로 부활하기 위해)
-	save_checkpoint(pos)
-	
-	var save_data = {
-		"score": score,
-		"interaction": npc_interaction_counts,
-		"coins": collected_coins,
-		"player_pos_x": pos.x,
-		"player_pos_y": pos.y,
-		"scene_path": get_tree().current_scene.scene_file_path
-	}
-	
-	var path = SAVE_PATH_TEMPLATE % slot_id
-	var file = FileAccess.open(path, FileAccess.WRITE)
-	if file:
-		file.store_var(save_data)
-		file.close()
-		print("슬롯 %d번 파일 저장 완료!" % slot_id)
+func _process(delta: float) -> void:
+	# ESC 키(ui_cancel)를 누르고 있는지 확인
+	# (Godot 기본 설정에서 ui_cancel은 ESC에 매핑되어 있습니다)
+	if Input.is_action_pressed("ui_cancel"):
+		quit_timer += delta
+		
+		# 로그로 진행 상황 확인 (1초 단위로 출력)
+		if int(quit_timer) > int(quit_timer - delta):
+			print("게임 종료까지... " + str(int(QUIT_DURATION - quit_timer) + 1))
+		
+		# 3초가 지났다면 게임 종료
+		if quit_timer >= QUIT_DURATION:
+			print("게임 종료!")
+			get_tree().quit()
+			
 	else:
-		print("오류: 파일 저장 실패")
+		# 키를 떼면 타이머 초기화
+		quit_timer = 0.0
 
 
-# --- [기능 2] 파일에서 불러오기 (슬롯) ---
-func load_game_from_slot(slot_id: int):
-	var path = SAVE_PATH_TEMPLATE % slot_id
-	
-	if not FileAccess.file_exists(path):
-		print("오류: %d번 세이브 파일이 없습니다." % slot_id)
-		return
-	
-	var file = FileAccess.open(path, FileAccess.READ)
-	if file:
-		var loaded_data = file.get_var()
-		file.close()
-		
-		# 데이터 복구
-		score = loaded_data.get("score", 0)
-		npc_interaction_counts = loaded_data.get("interaction", {})
-		collected_coins = loaded_data.get("coins", [])
-		current_slot_id = slot_id
-		
-		# 임시 변수 업데이트 (Player _ready에서 사용됨)
-		last_checkpoint_pos = Vector2(loaded_data["player_pos_x"], loaded_data["player_pos_y"])
-		has_checkpoint = true
-		
-		# [중요] 로드한 직후에 '임시 체크포인트' 데이터도 갱신해줘야 죽었을 때 롤백 가능
-		checkpoint_data = {
-			"score": score,
-			"interaction": npc_interaction_counts.duplicate(),
-			"coins": collected_coins.duplicate()
-		}
-		
-		get_tree().change_scene_to_file(loaded_data["scene_path"])
-		print("슬롯 %d번 로드 완료!" % slot_id)
-
-
-# --- [기능 3] 메모리에 임시 저장 (죽었을 때 롤백용) ---
-func save_checkpoint(pos: Vector2):
-	last_checkpoint_pos = pos
-	has_checkpoint = true
-	
-	checkpoint_data = {
-		"score": score,
-		"interaction": npc_interaction_counts.duplicate(), 
-		"coins": collected_coins.duplicate()               
-	}
-	print("임시 체크포인트 갱신됨")
-
-
-# --- [기능 4] 메모리에서 복구 (죽었을 때) ---
-func load_checkpoint():
-	if not has_checkpoint:
-		return
-	
-	score = checkpoint_data["score"]
-	npc_interaction_counts = checkpoint_data["interaction"].duplicate()
-	collected_coins = checkpoint_data["coins"].duplicate()
-	
-	print("임시 체크포인트로 롤백 완료!")
-
-
-# --- 기타 유틸리티 함수 ---
-func has_save_file(slot_id: int) -> bool:
-	return FileAccess.file_exists(SAVE_PATH_TEMPLATE % slot_id)
-	
+# 점수 증가 함수
 func add_point():
 	score += 1
 	print("현재 점수: " + str(score))
 
+
+# 특정 NPC와의 만남 횟수를 1 증가시키는 함수
 func increase_interaction(npc_id: String):
+	# 만약 장부에 이미 이 NPC가 있다면? -> 횟수 + 1
 	if npc_interaction_counts.has(npc_id):
 		npc_interaction_counts[npc_id] += 1
+	# 장부에 없는 처음 보는 NPC라면? -> 1로 등록
 	else:
 		npc_interaction_counts[npc_id] = 1
+	
+	# (디버그용) 잘 기록되는지 확인하고 싶으면 주석을 푸세요
+	# print("NPC [" + npc_id + "] 와의 만남 횟수: " + str(npc_interaction_counts[npc_id]))
 
+
+# [추가] 특정 NPC와 몇 번 만났는지 확인해서 숫자를 주는 함수
 func get_interaction_count(npc_id: String) -> int:
+	# 장부(get)에서 npc_id를 찾아서 값을 줍니다. 
+	# 만약 장부에 없다면(한 번도 안 만났다면) 기본값 0을 줍니다.
 	return npc_interaction_counts.get(npc_id, 0)
-
-func register_coin(coin_name: String):
-	if not collected_coins.has(coin_name):
-		collected_coins.append(coin_name)
-
-func is_coin_collected(coin_name: String) -> bool:
-	return collected_coins.has(coin_name)
-
-# 파일 내용 전체를 로드하지 않고 정보만 살짝 리턴하는 함수
-func get_save_info(slot_id: int) -> Dictionary:
-	var path = SAVE_PATH_TEMPLATE % slot_id
-	if not FileAccess.file_exists(path):
-		return {}
-		
-	var file = FileAccess.open(path, FileAccess.READ)
-	var data = file.get_var()
-	file.close()
-	return data
