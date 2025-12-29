@@ -1838,6 +1838,9 @@ sprite_frames = SubResource("SpriteFrames_xcvyr")
 animation = &"shyQsandblock_fx"
 autoplay = "shyQsandblock_fx"
 
+[node name="SavePoint" parent="Map_01/NPC" instance=ExtResource("32_ldaan")]
+position = Vector2(89, 40)
+
 [node name="Coins" type="Node2D" parent="Map_01"]
 
 [node name="Coin" parent="Map_01/Coins" instance=ExtResource("27_uxtoc")]
